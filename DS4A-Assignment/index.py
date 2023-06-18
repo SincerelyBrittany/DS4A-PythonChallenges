@@ -98,3 +98,62 @@ conn.close()
 
 print("Table created in the SQLite database!")
 
+
+
+
+
+import requests
+import pandas as pd
+from datetime import datetime
+
+# Define your Alpha Vantage API key
+api_key = "PHVOW5A6I113QTH2"
+timestamp = datetime.now()
+
+# Define the stocks you want to retrieve historical prices for
+symbols = ["AAPL", "MSFT", "GOOGL", "AMZN", "META"]
+
+# Iterate over the stocks and make API requests
+for stock in symbols:
+    # Define the API endpoint URL with the necessary query parameters
+    url = f"https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol={stock}&apikey={api_key}"
+    
+    # Send the HTTP request to the API
+    response = requests.get(url)
+    
+    # Parse the JSON response into a DataFrame
+    data = response.json()
+    stockDF = pd.DataFrame(data["Monthly Time Series"]).T
+ 
+    # Rename the columns for clarity
+    stockDF.columns = [ "open_price", "highest_price", "lowest_price", "close_price", "volume"]
+    
+
+    
+    # Print the historical prices for the current stock
+    # print(f"Historical Prices for {stock}:")
+    # print(stockDF)
+    # print("-----------------------------------------")
+
+
+    file_path = "data/stocks/stocks_data.csv"
+    stockDF.to_csv(file_path, index=False)
+
+    print("Stock data saved successfully!")
+
+    # Load data from the CSV file
+    csv_file = "data/headlines/stocks_data.csv"
+    stockDF = pd.read_csv(csv_file)
+
+    # Establish a connection to the SQLite database
+    db_file = "my_database.db"
+    conn = sqlite3.connect(db_file)
+
+    # Create a table in the database using the DataFrame
+    table_name = "stocks"
+    stockDF.to_sql(table_name, conn, if_exists="replace", index=False)
+
+    # Close the database connection
+    conn.close()
+
+    print("Table created in the SQLite database!")
