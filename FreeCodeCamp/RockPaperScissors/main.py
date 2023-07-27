@@ -11,12 +11,20 @@ def get_choices():
   player_choice = "rock"
   computer_choice ="paper"
 
+  choices = {"player": player_choice, "computer": computer_choice}
+
   return player_choice
 
 # Call the get_choices function and store the response in a variable called choices then print it 
 
-choices = get_choices()
-print(choices)
+get_choice = get_choices()
+print(get_choice)
+
+
+# Dictionaries in python are used to store data data values in key-value pairs 
+# dict = {"name" : "brittany", "color": "red", "choice": choices}
+
+
 
 
 
