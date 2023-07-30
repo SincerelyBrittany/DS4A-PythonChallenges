@@ -11,11 +11,38 @@ for suit in suits:
 
 # print(cards)
 
-random.shuffle(cards)
+def shuffle():
+    random.shuffle(cards)
+  
+
+shuffle()
 # print(cards)
 
-card = cards.pop()
-print(card)
+def deal(num):
+    cards_dealt = []
+    for x in range(num):
+        card = cards.pop()
+        cards_dealt.append(card)
+    return cards_dealt
+
+cards_dealt = deal(2)
+# print(cards_dealt)
+
+card = cards_dealt[0]
+rank = card[1]
+
+if rank == "A":
+    value = 11
+elif rank == "J" or rank == "Q" or rank =="K":
+    value = 10
+else:
+    value = rank
+
+
+print(rank, value)
+
+
+print(rank)
 
 
 
