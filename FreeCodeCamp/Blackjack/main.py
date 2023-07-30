@@ -39,10 +39,10 @@ else:
     value = rank
 
 
-print(rank, value)
+rank_dict = {"rank" : rank, "value": value}
 
+print(rank_dict["rank"], rank_dict["value"])
 
-print(rank)
 
 
 
