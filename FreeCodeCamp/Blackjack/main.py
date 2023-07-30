@@ -29,17 +29,26 @@ class Deck:
         # print(cards)
 
     def shuffle(self):
-        random.shuffle(self.cards)
+        if len(self.cards) > 1:
+         random.shuffle(self.cards)
 
 
     def deal(self, num):
         cards_dealt = []
         for x in range(num):
-            card = self.cards.pop()
-            cards_dealt.append(card)
+            if len(self.cards) > 0:
+                card = self.cards.pop()
+                cards_dealt.append(card)
         return cards_dealt
     
 
+
+deck_one = Deck()
+print(deck_one.cards)
+
+deck_two = Deck()
+deck_two.shuffle()
+print(deck_two.cards)
     # shuffle()
 
     # ## REFACTOR
