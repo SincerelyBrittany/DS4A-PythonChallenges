@@ -136,6 +136,10 @@ def is_adult(age):
 def is_adult2(age): 
     return True if age > 18 else False
 
+a = 2
+result = 2 if a == 0 else 3
+print(result) # 3
+
 
 print("SincerlyBrittanyUsingTheUpperMethod".upper())
 print("sincerlyBrittanyUsingTheTitleMethod".title())
@@ -157,3 +161,81 @@ print("sincerlyBrittanyUsingTheTitleMethod".islower())
 # join() to append new letters to a string
 # find() to find the position of a substring
 
+
+#THESE ALL RETURN A NEW STRING/ Not the modified string
+
+name = "cat"
+print(len(name)) #finds the length os a string 
+print ("au" in name) #checks to see if au is in the name
+
+#ESCAPING characters
+
+name = "Br\"au"
+print(name)
+name = 'Br\"au'
+print(name)
+name = 'Br\'"au'
+print(name)
+name = 'Br\nau' #adds a new line
+print(name)
+name = "this will show a slice string - check it out"
+print(name[1:8])
+print(name[10:])
+
+# numbers are always true except for the number 0
+# strings are false - only when empty 
+# list, tuples, and dictionaries are only false when empty
+
+#When evaluating a value for True or False, if the value is not a bool we have some rules depending on the type we're checking:
+
+#numbers are always True except for the number 0
+#strings are False only when empty
+#lists, tuples, sets, and dictionaries are False only when empty
+
+#The global any() function is also very useful when working with booleans, as it returns True if any of the values of the iterable (list, for example) passed as argument are True:
+
+
+book_1_read = True
+book_2_read = False
+
+read_any_book = any([book_1_read, book_2_read])
+
+# The global all() function is same, but returns True if all of the values passed to it are True:
+
+ingredients_purchased = True
+meal_cooked = False
+
+ready_to_serve = all([ingredients_purchased, meal_cooked])
+
+# Complex numbers in Python
+# Complex numbers are of type complex.
+
+# You can define them using a value literal:
+
+complexNumber = 2+3j
+# or using the complex() constructor:
+
+complexNumber = complex(2, 3)
+# Once you have a complex number, you can get its real and imaginary part:
+
+complexNumber.real #2.0
+complexNumber.imag #3.0
+
+# Again, to check if a variable is of type complex, you can use the type() global function:
+
+type(complexNumber) == complex #True
+
+# abs() returns the absolute value of a number.
+
+# round() given a number, returns its value rounded to the nearest integer:
+
+round(0.12) #0
+# You can specify a second parameter to set the decimal point's precision:
+
+round(0.12, 1) #0.1
+# Several other math utility functions and constants are provided by the Python standard library:
+
+# the math package provides general math functions and constants
+# the cmath package provides utilities to work with complex numbers.
+# the decimal package provides utilities to work with decimals and floating point numbers.
+# the fractions package provides utilities to work with rational numbers.
